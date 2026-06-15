@@ -63,7 +63,7 @@ sudo clamscan /usr/bin/program-name
 sudo clamscan -r /usr/lib/application-name/
 
 ### Scan every file installed by a package
-pacman -Ql package-name | awk '{print $2}' | grep -v '/$' \ | sudo xargs clamscan
+pacman -Ql package-name | awk '{print $2}' | grep -v '/$' | sudo xargs clamscan
 
 > Treat findings as indicators, not proof of compromise.
 
