@@ -63,13 +63,7 @@ sudo clamscan /usr/bin/program-name
 sudo clamscan -r /usr/lib/application-name/
 
 ### Scan every file installed by a package
-pacman -Ql package-name | awk '{print $2}' | grep -v '/$' \
-    | sudo xargs clamscan
-
-### Inspect Electron application bundles
-strings /usr/lib/application-name/app.asar \
-    | grep -E "(curl|wget|eval|base64|/tmp/|bash -c)" \
-    | head -20
+pacman -Ql package-name | awk '{print $2}' | grep -v '/$' \ | sudo xargs clamscan
 
 > Treat findings as indicators, not proof of compromise.
 
@@ -85,8 +79,7 @@ Inspect install hooks:
 less package-name/*.install 2>/dev/null
 
 Search for potentially risky patterns:
-grep -E "(curl|wget|eval|base64|/tmp/|bash -c|python -c|nc )" \
-    package-name/PKGBUILD
+grep -E "(curl|wget|eval|base64|/tmp/|bash -c|python -c|nc )" \ package-name/PKGBUILD
 
 List files installed by a package:
 pacman -Ql package-name
